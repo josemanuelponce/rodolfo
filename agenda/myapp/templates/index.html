@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Contacts List</h1>
+
+<a href="/create">Add</a>
+<ul>
+    {% for contact in contacts %}
+    <li>
+        {{contact.nick }}
+        <a href="/update/{{ contact.uid }}">Update</a>
+        <a href="/delete/{{ contact.uid }}">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
