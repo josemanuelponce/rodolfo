@@ -1,0 +1,21 @@
+html{
+    background: #cccccc;
+}
+.campo {
+    text-align: right;
+}
+.file-boton {
+    text-align: right;
+    padding-top: 1rew;
+}
+.error {
+    border-color: red;
+}
+tr{
+    padding-bottom: 10px !important;
+}
+#createForm {
+    border: solid 1px #4f4f4f;
+    width: 300px;
+    padding: 0.7rew;
+}

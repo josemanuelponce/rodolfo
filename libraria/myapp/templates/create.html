@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Add Contact</h1>
+<a href="/">Back</a><br><br>
+
+<form id="createForm" action="/create" method="post">
+    <table>
+        <tbody>
+            <tr>
+                <td class="campo">
+                    <label for="tittle_input">Titulo</label>
+                </td>
+                <td><input type="text" name="tittle" id="tittle_input"></td>
+            </tr>
+            <tr>
+                <td class="campo">
+                    <label for="genres_input">Genero</label>
+                </td>
+                <td><input type="text" name="genres" id="genres_input"></td>
+            </tr>
+
+            <tr>
+                <td class="campo">
+                    <label for="authors_input">Autor</label>
+                </td>
+                <td>
+                    <input type="text" name="authors" id="authors_input">
+                </td>
+            </tr>
+            <tr>
+                <td class="file-boton" colspan="2">
+                <button id="submitButton">Add</button>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+<button id="clearButton">Clear</button>
+<button id="hideButton">Hide</button>
+<button id="showButton">Show</button>
+
+<script src="{{ url_for('static', filename='validation.js')}}"></script>
+{% endblock %}
