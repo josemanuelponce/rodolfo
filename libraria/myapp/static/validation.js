@@ -1,38 +1,31 @@
 var form = document.getElementById("createForm");
 
-const nick = document.getElementById("nick_input");
-const firstName = document.getElementById("first_name_input");
-const lastName = document.getElementById("last_name_input");
-const phone = document.getElementById("phone_input");
+const tittle = document.getElementById("tittle_input");
+const genres = document.getElementById("genres_input");
+const authors = document.getElementById("authors_input");
 
 var clearButton = document.getElementById("clearButton");
 var hideButton = document.getElementById("hideButton");
 var showButton = document.getElementById("showButton");
 
 function onSubmitClicked(event) {
-    if(nick.value.trim().length === 0) {
-        nick.classList.add("error");
-        alert("Nick required");
+    if(tittle.value.trim().length === 0) {
+        tittle.classList.add("error");
+        alert("Tittle required");
         return false;
     } else {
-        nick.classList.remove("error");
+        tittle.classList.remove("error");
     }
 
-    if(firstName.value.trim().length === 0) {
-        firstName.classList.add("error");
-        alert("First Name required");
+    if(genres.value.trim().length === 0) {
+        genres.classList.add("error");
+        alert("genres required");
         return false;
     } 
 
-    if(lastName.value.trim().length === 0) {
-        lastName.classList.add("error");
-        alert("Last Name required");
-        return false;
-    } 
-
-    if(phone.value.trim().length === 0 || isNaN(phone.value)) {
-        phone.classList.add("error");
-        alert("Phone required");
+    if(authors.value.trim().length === 0) {
+        authors.classList.add("error");
+        alert("authors required");
         return false;
     } 
 
@@ -40,10 +33,9 @@ function onSubmitClicked(event) {
 }
 
 function clear(){
-    nick.value = "";
-    firstName.value = "";
-    lastName.value = "";
-    phone.value = "";
+    tittle.value = "";
+    genres.value = "";
+    authors.value = "";
 }
 
 function hide() {

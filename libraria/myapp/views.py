@@ -24,6 +24,22 @@ def init_views(app, db_access: dict[str, Callable]):
 
             "index.html", items=items, pages=[i + 1 for i in range(total_pages)] 
         )
+    
+    @app.route("/create", methods=["GET", "POST"])
+    def create():
+        if request.method == "GET":
+            return render_template("create.html")
+
+        if request.method == "POST":
+            create_contact = db_access["create"]
+            create_contact(
+                tittle=request.form["tittle"],
+                genres=request.form["genres"],
+                authors=request.form["authors"],
+            )
+            return redirect("/")
+
+
 
     @app.route("/items/<uid>", methods=["GET", "POST"])
     def list_items_interactions(uid: str):
