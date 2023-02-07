@@ -3,7 +3,7 @@
 <h1>Add Contact</h1>
 <a href="/">Back</a><br><br>
 
-<form id="createForm" action="/create" method="post">
+<form id="createForm" action="/create" method="POST">
     <table>
         <tbody>
             <tr>
@@ -39,6 +39,8 @@
 <button id="clearButton">Clear</button>
 <button id="hideButton">Hide</button>
 <button id="showButton">Show</button>
+{% endblock %}
 
-<script src="{{ url_for('static', filename='validation.js')}}"></script>
+{% block js %}
+<script src="{{ url_for('static', filename='validation.js') }}"></script>
 {% endblock %}

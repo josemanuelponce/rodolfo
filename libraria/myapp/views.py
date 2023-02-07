@@ -27,16 +27,18 @@ def init_views(app, db_access: dict[str, Callable]):
     
     @app.route("/create", methods=["GET", "POST"])
     def create():
+        
         if request.method == "GET":
             return render_template("create.html")
 
         if request.method == "POST":
-            create_contact = db_access["create"]
-            create_contact(
-                tittle=request.form["tittle"],
-                genres=request.form["genres"],
-                authors=request.form["authors"],
-            )
+            print("holaaaaaaaaaaaaaaaa")
+            # create_contact = db_access["create"]
+            # create_contact(
+            #     tittle=request.form["tittle"],
+            #     genres=request.form["genres"],
+            #     authors=request.form["authors"],
+            # )
             return redirect("/")
 
 

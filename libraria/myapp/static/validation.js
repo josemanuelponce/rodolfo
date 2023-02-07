@@ -46,8 +46,8 @@ function show(){
     form.style.display = "";
 }
 
-form.onsubmit = onSubmitClicked;
+// form.onsubmit = onSubmitClicked;
 
-clearButton.onclick = clear;
-hideButton.onclick = hide;
-showButton.onclick = show;
+// clearButton.onclick = clear;
+// hideButton.onclick = hide;
+// showButton.onclick = show;
