@@ -91,7 +91,7 @@ def init_db(app) -> dict[str, Callable]:
 
     return { # aquí se publican las funciones internas de init_db, para poder llamarlas desde 
              # fuera de init_db
-        "create": items_create,
+        "items_create": items_create,
         "items_list": items_list,
         "items_read": items_read,
         "items_interactions": items_interactions,

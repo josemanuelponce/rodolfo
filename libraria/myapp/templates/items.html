@@ -73,17 +73,16 @@
             {% for s in interactions %}
             <tr>
               <td>{{ s.id }}</td>
-              <td>{{ s.day }}/{{ s.month }}/{{ s.year }}</td>
-              <td>{{ s.hindfoot_length }}</td>
-              <td>{{ s.weight }}</td>
-              <td>{{ s.sex }}</td>
+              <td>{{ s.tittle }}</td>
+              <td>{{ s.genres }}</td>
+              <td>{{ s.authors }}</td>
               <td>
                 <a
                   title="Borrar Survey"
                   class="delete-btn"
                   href="/items/{{ items.id }}/interactions/{{ s.id }}/delete"
                 >
-                🗑
+                
                 </a>
               </td>
             </tr>

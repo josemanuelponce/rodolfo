@@ -32,8 +32,8 @@ def init_views(app, db_access: dict[str, Callable]):
             return render_template("create.html")
 
         if request.method == "POST":
-            print("holaaaaaaaaaaaaaaaa")
-            items_create = db_access["create"]
+           
+            items_create = db_access["items_create"]
             items_create(
                  tittle=request.form["tittle"],
                  genres=request.form["genres"],
@@ -58,7 +58,7 @@ def init_views(app, db_access: dict[str, Callable]):
             items_update = db_access["items_update"] # db_access está en los models.py
             print(f"{request.form=}") # estás para depurar, no va
             items_update( # se están asignando los valores en la base de datos
-                uid=id,
+                id=id,
                 tittle=request.form["tittle"],
                 genres=request.form["genres"],
                 authors=request.form["authors"],
@@ -87,5 +87,5 @@ def init_views(app, db_access: dict[str, Callable]):
     def items_delete(id: int):
         if request.method == "POST":
             items_delete = db_access["items_delete"]
-            items_delete(uid=id)
+            items_delete(id=id)
             return redirect("/")
