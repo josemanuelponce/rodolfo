@@ -2,39 +2,33 @@
 <h1>Update Contact - {{ contact.fullname }}</h1>
 <a href="/">Back</a><br /><br />
 
-<form action="/update/{{ contact.uid }}" method="post">
-  <label for="nick_input">Nickname</label>
+<form action="/update/{{ contact.id }}" method="post">
+  <label for="tittle_input">Titulo</label>
   <input
     type="text"
-    name="nick"
-    id="nick_input"
-    value="{{ contact.nick }}"
+    name="tittle"
+    id="tittle_input"
+    value="{{ contact.tittle }}"
   /><br />
 
-  <label for="first_name_input">First Name</label>
+  <label for="genres_input">Genero</label>
   <input
     type="text"
-    name="first_name"
-    id="first_name_input"
-    value="{{ contact.first_name }}"
+    name="genres"
+    id="genres_input"
+    value="{{ contact.genres }}"
   /><br />
 
-  <label for="last_name_input">Last Name</label>
+  <label for="authors_input">Autor</label>
   <input
     type="text"
-    name="last_name"
-    id="last_name_input"
-    value="{{ contact.last_name }}"
+    name="authors"
+    id="authors_input"
+    value="{{ contact.authors }}"
   /><br />
 
-  <label for="phone_input">Phone</label>
-  <input
-    type="tel"
-    name="phone"
-    id="phone_input"
-    value="{{ contact.phone }}"
-  /><br />
 
+  
   <input type="submit" value="Update" />
 </form>
 {% endblock %}

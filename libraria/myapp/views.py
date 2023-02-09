@@ -33,32 +33,32 @@ def init_views(app, db_access: dict[str, Callable]):
 
         if request.method == "POST":
             print("holaaaaaaaaaaaaaaaa")
-            # create_contact = db_access["create"]
-            # create_contact(
-            #     tittle=request.form["tittle"],
-            #     genres=request.form["genres"],
-            #     authors=request.form["authors"],
-            # )
+            items_create = db_access["create"]
+            items_create(
+                 tittle=request.form["tittle"],
+                 genres=request.form["genres"],
+                 authors=request.form["authors"],
+             )
             return redirect("/")
 
 
 
-    @app.route("/items/<uid>", methods=["GET", "POST"])
-    def list_items_interactions(uid: str):
+    @app.route("/items/<id>", methods=["GET", "POST"])
+    def list_items_interactions(id: str):
         page = int(request.args.get("page", 1))
 
         items_interactions = db_access["items_interactions"]
-        interactions = items_interactions(uid, page)
+        interactions = items_interactions(id, page)
         total_pages = ceil(interactions.total / 10)
 
         items_read = db_access["items_read"]
-        items = items_read(uid)
+        items = items_read(id)
 
         if request.method == "POST": # el request tiene toda la información
             items_update = db_access["items_update"] # db_access está en los models.py
             print(f"{request.form=}") # estás para depurar, no va
             items_update( # se están asignando los valores en la base de datos
-                uid=uid,
+                uid=id,
                 tittle=request.form["tittle"],
                 genres=request.form["genres"],
                 authors=request.form["authors"],
@@ -83,9 +83,9 @@ def init_views(app, db_access: dict[str, Callable]):
 
         
 
-    @app.route("/items/<uid>/delete", methods=["POST"])
-    def items_delete(uid: int):
+    @app.route("/items/<id>/delete", methods=["POST"])
+    def items_delete(id: int):
         if request.method == "POST":
             items_delete = db_access["items_delete"]
-            items_delete(uid=uid)
+            items_delete(uid=id)
             return redirect("/")

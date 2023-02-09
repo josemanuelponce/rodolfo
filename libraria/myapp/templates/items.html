@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Surveys for Species: "{{ items.name }}"</h1>
+<h1>Surveys for Species: "{{ items.tittle }}"</h1>
 
 <table width="100%">
   <tbody>
@@ -9,38 +9,38 @@
         <!--  action dice adónde se va a enviar los datos del formulario al hacer submit-->
         <form      
           class="items-form"
-          action="/items/{{ items.uid }}" 
+          action="/items/{{ items.id }}" 
           method="post"
         >
-          <label for="genus_input">Genus</label>
+          <label for="tittle_input">Titulo</label>
           <input
             type="text"
-            name="genus"
-            id="genus_input"
-            value="{{ items.genus }}"
+            name="tittle"
+            id="tittle_input"
+            value="{{ items.tittle }}"
           /><br />
 
-          <label for="taxa_input">Taxa</label>
+          <label for="genres_input">Genero</label>
           <input
             type="text"
-            name="taxa"
-            id="taxa_input"
-            value="{{ items.taxa }}"
+            name="genres"
+            id="genres_input"
+            value="{{ items.genres }}"
           /><br />
 
-          <label for="name_input">Name</label>
+          <label for="authors_input">Autor</label>
           <input
             type="text"
-            name="name"
-            id="name_input"
-            value="{{ items.name }}"
+            name="authors"
+            id="authors_input"
+            value="{{ items.authors }}"
           /><br />
 
           <br />
           <input type="submit" value="Actualizar" />  <!--  si está dentro de un formulario este es el botón input type="submit"  Actualizar es la etiqueta que aparece en la página web-->
         </form>
         <br />
-        <form action="/items/{{ items.uid }}/delete" method="post">
+        <form action="/items/{{ items.id }}/delete" method="post">
           <input type="submit" value="Borrar" />
         </form>
       </td>
@@ -49,12 +49,12 @@
         <p>
           {% for page in pages %} {% if page == items.page %}
           <a
-            href="/items/{{ items.uid }}?page={{ page }}"
+            href="/items/{{ items.id }}?page={{ page }}"
             class="current-page"
             ><strong>{{ page }}</strong></a
           >
           {% else %}
-          <a href="/items/{{ items.uid }}?page={{ page }}">{{ page }}</a>
+          <a href="/items/{{ items.id }}?page={{ page }}">{{ page }}</a>
           {% endif %} {% endfor %}
         </p>
         <!--  la tabla de la derecha-->
@@ -62,10 +62,9 @@
           <thead>
             <tr>
               <th>ID</th>
-              <th>Date</th>
-              <th>Hindfoot Length</th>
-              <th>Weight</th>
-              <th>Sex</th>
+              <th>Nombre</th>
+              <th>Genero</th>
+              <th>Autor</th>
               <th></th>
             </tr>
           </thead>
@@ -73,7 +72,7 @@
           <tbody>
             {% for s in interactions %}
             <tr>
-              <td>{{ s.uid }}</td>
+              <td>{{ s.id }}</td>
               <td>{{ s.day }}/{{ s.month }}/{{ s.year }}</td>
               <td>{{ s.hindfoot_length }}</td>
               <td>{{ s.weight }}</td>
@@ -82,7 +81,7 @@
                 <a
                   title="Borrar Survey"
                   class="delete-btn"
-                  href="/items/{{ items.uid }}/interactions/{{ s.uid }}/delete"
+                  href="/items/{{ items.id }}/interactions/{{ s.id }}/delete"
                 >
                 🗑
                 </a>
