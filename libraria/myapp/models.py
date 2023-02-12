@@ -12,7 +12,7 @@ def init_db(app) -> dict[str, Callable]:
     class Users(db.Model):
         __tablename__ = "users"
 
-        id = db.Column("user_id", db.BigInteger, primary_key=True)
+        id = db.Column("user_id", db.Integer, primary_key=True)
         age = db.Column("age", db.Integer)
         sex = db.Column("sex", db.String)
         interactions = db.relationship("Interactions", backref="user", lazy=True)
@@ -20,25 +20,23 @@ def init_db(app) -> dict[str, Callable]:
     class Items(db.Model):
         __tablename__ = "items"
 
-        id = db.Column("item_id", db.BigInteger, primary_key=True)
+        id = db.Column("item_id", db.Integer, primary_key=True)
         tittle = db.Column("tittle", db.String)
         genres = db.Column("genres", db.String)
         authors = db.Column("authors", db.String)
         interactions = db.relationship("Interactions", backref="items", lazy=True)
 
-        def __str__(self): 
-            return f"[{self.id}] {self.tittle} {self.genres} {self.authors}"
+        
         
 
     class Interactions(db.Model):
         __tablename__ = "interactions"
 
-        id = db.Column("interactions_id", db.BigInteger, primary_key=True)
+        id = db.Column("interactions_id", db.Integer, primary_key=True)
         user_id = db.Column(db.BigInteger, db.ForeignKey("users.user_id"))
         item_id = db.Column(db.BigInteger, db.ForeignKey("items.item_id"))
 
-        def __str__(self): 
-            return f"[{self.id}] {self.user_id} {self.item_id}"
+        
 
 
 
@@ -56,10 +54,10 @@ def init_db(app) -> dict[str, Callable]:
     
 
 
-    def items_read(id: str) -> Items:
+    def items_read(id: int) -> Items:
         return Items.query.get(id)
 
-    def items_interactions(id: str, page: int = 1):
+    def items_interactions(id: int, page: int = 1):
         return Interactions.query.filter_by(item_id=id).paginate(
             page=page, max_per_page=10
         )
@@ -71,7 +69,7 @@ def init_db(app) -> dict[str, Callable]:
         items.authors = authors
         db.session.commit()
 
-    def items_delete(id: str):
+    def items_delete(id: int):
         items = Items.query.get(id)
         db.session.delete(items)
         db.session.commit()
@@ -81,17 +79,22 @@ def init_db(app) -> dict[str, Callable]:
         db.session.delete(interactions)
         db.session.commit()
 
-    def items_create(tittle: str, genres: str, authors: str):
-        item = Items(tittle=tittle, genres=genres, authors=authors)
+    def create_contact(tittle: str, genres: str, authors: str):
+        contact = Items(tittle=tittle, genres=genres, authors=authors)
         
-        db.session.add(item)
+        db.session.add(contact)
         db.session.commit()
+
+        
+        
 
     db.create_all()
 
+    
+
     return { # aquí se publican las funciones internas de init_db, para poder llamarlas desde 
              # fuera de init_db
-        "items_create": items_create,
+        "create": create_contact,
         "items_list": items_list,
         "items_read": items_read,
         "items_interactions": items_interactions,
@@ -99,3 +102,4 @@ def init_db(app) -> dict[str, Callable]:
         "items_delete": items_delete,
         "interactions_delete": interactions_delete,
     }
+    

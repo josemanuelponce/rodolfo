@@ -15,30 +15,29 @@
       <div class="row">
         <div class="col-12">
           <a class="btn btn-secondary" href="/create">Crear Libro</a>
+          <p>  
+            {% for page in pages %} {% if page == items.page %}
+            <!-- En negritas la página actual-->
+            <a href="/?page={{ page }}" class="current-page"
+              ><strong>{{ page }}</strong></a
+            >
+            {% else %}
+            <!-- En letra normal el resto de las páginas -->
+            <a href="/?page={{ page }}">{{ page }}</a>
+            {% endif %} {% endfor %}
+          </p>
+        
+          {% for sp in items.items %}
+          <li><a href="/items/{{ sp.id }}">{{ sp.tittle }}</a></li>
+          {% endfor %}
+        </ul>
+        {% endblock %}
         </div>
       </div>
     </div>
   <ul>
-    <!-- La página index ha sido lanzada por flask desde las vistas -->
-    <!-- "index.html", items=items, pages=[i + 1 for i in range(total_pages)]  -->
-    <!--  Se le han pasado como parámetros las items, obtenidas de la BD y el listado de páginas (ver en views.py)-->
-    <p>  <!-- Párrafo -->
-      {% for page in pages %} {% if page == items.page %}
-      <!-- En negritas la página actual-->
-      <a href="/?page={{ page }}" class="current-page"
-        ><strong>{{ page }}</strong></a
-      >
-      {% else %}
-      <!-- En letra normal el resto de las páginas -->
-      <a href="/?page={{ page }}">{{ page }}</a>
-      {% endif %} {% endfor %}
-    </p>
-  
-    {% for sp in items.items %}
-    <li><a href="/items/{{ sp.id }}">{{ sp.tittle }}</a></li>
-    {% endfor %}
-  </ul>
-  {% endblock %}
+    
+    
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -32,9 +32,8 @@ def init_views(app, db_access: dict[str, Callable]):
             return render_template("create.html")
 
         if request.method == "POST":
-           
-            items_create = db_access["items_create"]
-            items_create(
+            create_contact = db_access["create"]
+            create_contact(
                  tittle=request.form["tittle"],
                  genres=request.form["genres"],
                  authors=request.form["authors"],
@@ -44,7 +43,7 @@ def init_views(app, db_access: dict[str, Callable]):
 
 
     @app.route("/items/<id>", methods=["GET", "POST"])
-    def list_items_interactions(id: str):
+    def list_items_interactions(id: int):
         page = int(request.args.get("page", 1))
 
         items_interactions = db_access["items_interactions"]
@@ -73,7 +72,7 @@ def init_views(app, db_access: dict[str, Callable]):
         )
 
     @app.route("/items/<items_id>/interactions/<int:interactions_id>/delete", methods=["GET"])
-    def delete_items_interactions(items_id: str, interactions_id: int):
+    def delete_items_interactions(items_id: int, interactions_id: int):
         interactions_delete = db_access["interactions_delete"]
         interactions_delete(interactions_id)
 
