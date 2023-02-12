@@ -9,7 +9,104 @@
 </head>
 <body>
     <main>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" aria-current="page" href="/">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shop" viewBox="0 0 16 16">
+                  <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
+                </svg>
+                Libreria
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                
+                  <a class="nav-link" href="/create">Crear Libro</a>
+                  <a class="nav-link" href=""></a>
+                </div>
+              </div>
+            </div>
+          </nav>
         {% block content %} {% endblock %}
+        <br><br>
+        <div class="container-fluid">
+            <div class="row p-5 pb-2 bg-dark text-white">
+                <div class="col-xs-12 col-md-6 col-lg-3">
+                    <p class="h3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bootstrap-fill" viewBox="0 0 16 16">
+                        <path d="M6.375 7.125V4.658h1.78c.973 0 1.542.457 1.542 1.237 0 .802-.604 1.23-1.764 1.23H6.375zm0 3.762h1.898c1.184 0 1.81-.48 1.81-1.377 0-.885-.65-1.348-1.886-1.348H6.375v2.725z"/>
+                        <path d="M4.002 0a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4V4a4 4 0 0 0-4-4h-8zm1.06 12V3.545h3.399c1.587 0 2.543.809 2.543 2.11 0 .884-.65 1.675-1.483 1.816v.1c1.143.117 1.904.931 1.904 2.033 0 1.488-1.084 2.396-2.888 2.396H5.062z"/>
+                      </svg> Bootstrap</p>
+                    <p>Designed and built with all the love in the world by the
+                         Bootstrap team with the help of our contributors.</p>
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-3">
+                    <p class="h5 mb-3">Links</p>
+                    <div class="mb-2">
+                        <a class="text-white text-decoration-none" href="#">Home</a>
+                    </div>
+                    <div class="mb-2">
+                        <a class="text-white text-decoration-none" href="#">Docs</a>
+                    </div>
+                    <div class="mb-2">
+                        <a class="text-white text-decoration-none" href="#">Examples</a>
+                    </div>
+                    <div class="mb-2">
+                        <a class="text-white text-decoration-none" href="#">Icons</a>
+                    </div>
+                    <div class="mb-2">
+                        <a class="text-white text-decoration-none" href="#">Themes</a>
+                    </div>
+                    <div class="mb-2">
+                        <a class="text-white text-decoration-none" href="#">Blog</a>
+                    </div>
+                    <div class="mb-2">
+                        <a class="text-white text-decoration-none" href="#">Swag Store</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-3">
+                    <p class="h5 mb-3">Guides</p>
+                    <div class="mb-2">
+                        <a class="text-white text-decoration-none" href="#">Getting started</a>
+                    </div>
+                    <div class="mb-2">
+                        <a class="text-white text-decoration-none" href="#">Starter template</a>
+                    </div>
+                    <div class="mb-2">
+                        <a class="text-white text-decoration-none" href="#">Webpack</a>
+                    </div>
+                    <div class="mb-2">
+                        <a class="text-white text-decoration-none" href="#">Parcel</a>
+                    </div>
+                    <div class="mb-2">
+                        <a class="text-white text-decoration-none" href="#">Vite</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-3">
+                    <p class="h5 mb-3">Community</p>
+                    <div class="mb-2">
+                        <a class="text-white text-decoration-none" href="#">Issues</a>
+                    </div>
+                    <div class="mb-2">
+                        <a class="text-white text-decoration-none" href="#">Discussions</a>
+                    </div>
+                    <div class="mb-2">
+                        <a class="text-white text-decoration-none" href="#">Corporate sponsors</a>
+                    </div>
+                    <div class="mb-2">
+                        <a class="text-white text-decoration-none" href="#">Open Collective</a>
+                    </div>
+                    <div class="mb-2">
+                        <a class="text-white text-decoration-none" href="#">Stack Overflow</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 pt-5">
+                    <p class="text-white text-center">Copyright - All rights reserved © 2022</p>
+                </div>
+            </div>
+        </div>
     </main>
     {% block js %}
     <!--<script src="index.js"></script>-->
