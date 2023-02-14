@@ -2,7 +2,7 @@ from typing import Callable
 
 from flask_sqlalchemy import SQLAlchemy
 
-# from sqlalchemy import desc
+
 
 
 def init_db(app) -> dict[str, Callable]:
@@ -15,7 +15,7 @@ def init_db(app) -> dict[str, Callable]:
         id = db.Column("user_id", db.Integer, primary_key=True)
         age = db.Column("age", db.Integer)
         sex = db.Column("sex", db.String)
-        interactions = db.relationship("Interactions", backref="user", lazy=True)
+        interactions = db.relationship("Interactions", backref="users", lazy=True)
 
     class Items(db.Model):
         __tablename__ = "items"
@@ -33,8 +33,8 @@ def init_db(app) -> dict[str, Callable]:
         __tablename__ = "interactions"
 
         id = db.Column("interactions_id", db.Integer, primary_key=True)
-        user_id = db.Column(db.BigInteger, db.ForeignKey("users.user_id"))
-        item_id = db.Column(db.BigInteger, db.ForeignKey("items.item_id"))
+        user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+        item_id = db.Column(db.Integer, db.ForeignKey("items.item_id"))
 
         
 
@@ -43,7 +43,7 @@ def init_db(app) -> dict[str, Callable]:
     # las funciones que operan sobres los datos, al final se retornan de la función init_db para poder usarlos fuera de ella
     def items_list(page: int = 1) -> list[Items]: # se pasa como parámetro la página, por defecto es página 1
         # Ordenamiento en el motor de base de datos
-        items_list = Items.query.order_by(Items.genres).paginate(
+        items_list = Items.query.order_by(Items.tittle).paginate(
             page=page, max_per_page=10 # divide en páginas de 10 elementos y devuelve solamente los 10 (o menos si es la última)
         )  # Ordenamiento Ascendente   # del número de página que se ha pasado como parámetro 
         print(f"{items_list=}") # esto es para debug, no va

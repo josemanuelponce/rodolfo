@@ -6,7 +6,7 @@ body {
 }
 .file-boton {
     text-align: right;
-    padding-top: 1rew;
+    padding-top: 1rem;
 }
 .error {
     border-color: red;
@@ -17,5 +17,36 @@ tr{
 #createForm {
     border: solid 1px #4f4f4f;
     width: 300px;
-    padding: 0.7rew;
+    padding: 0.7rem;
 }
+#items-table {
+    border: solid 1px black;
+    border-collapse: collapse;
+  }
+  #items-table th {
+    border: solid 1px black;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  #items-table td {
+    border: solid 1px black;
+  }
+  
+  .delete-btn {
+    text-decoration: none;
+    padding: 0.5rem;
+  }
+  
+  .current-page {
+    color: red;
+    text-decoration: none; /* Quitar subrayado de los links */
+  }
+  
+  .align-top {
+    vertical-align: top;
+  }
+  
+  .items-form {
+    margin-top: 50px;
+  }

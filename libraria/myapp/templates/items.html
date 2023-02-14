@@ -1,12 +1,25 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Surveys for Species: "{{ items.tittle }}"</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="stylesheet" href="../static/mystyle.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-9">
+        <h1>Libro: "{{ items.tittle }}"</h1>
 
 <table width="100%">
   <tbody>
     <tr>
       <td class="align-top" width="50%">
-        <!--  formulario para actualizar cada campo de una especie-->
-        <!--  action dice adónde se va a enviar los datos del formulario al hacer submit-->
+      
         <form      
           class="items-form"
           action="/items/{{ items.id }}" 
@@ -37,7 +50,7 @@
           /><br />
 
           <br />
-          <input type="submit" value="Actualizar" />  <!--  si está dentro de un formulario este es el botón input type="submit"  Actualizar es la etiqueta que aparece en la página web-->
+          <input type="submit" value="Actualizar" /> 
         </form>
         <br />
         <form action="/items/{{ items.id }}/delete" method="post">
@@ -68,14 +81,15 @@
               <th></th>
             </tr>
           </thead>
-          <!-- La tabla de la derecha, donde están los resultados de cada survey  -->
+          <!-- La tabla de la derecha  -->
           <tbody>
             {% for s in interactions %}
             <tr>
-              <td>{{ s.id }}</td>
-              <td>{{ s.tittle }}</td>
-              <td>{{ s.genres }}</td>
-              <td>{{ s.authors }}</td>
+              <td>{{ s.items.id }}</td>
+              <td>{{ s.items.tittle }}</td>
+              <td>{{ s.items.genres }}</td>
+              <td>{{ s.items.authors }}</td>
+              <td></td>
               <td>
                 <a
                   title="Borrar Survey"
@@ -93,5 +107,11 @@
     </tr>
   </tbody>
 </table>
-
 {% endblock %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
