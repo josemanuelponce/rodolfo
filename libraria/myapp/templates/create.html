@@ -16,41 +16,49 @@
         <div class="row">
             <div class="col-12">
                 <form id="createForm" action="/create" method="POST">
-                    <table>
+                    <table class="table table-striped table-hover">
                         <tbody>
+                            <div class="form-group mb-3">
                             <tr>
                                 <td class="campo">
-                                    <label for="tittle_input">Titulo</label>
+                                    <h3>Titulo</h3>
+                                    <label class="form-label" for="tittle_input"></label>
                                 </td>
-                                <td><input type="text" name="tittle" id="tittle_input"></td>
+                                <td><input class="form-control" type="text" name="tittle" id="tittle_input"></td>
                             </tr>
+                            </div>
+                            <div class="form-group mb-3">
                             <tr>
                                 <td class="campo">
-                                    <label for="genres_input">Genero</label>
+                                    <h3>Genero</h3>
+                                    <label class="form-label" for="genres_input"></label>
                                 </td>
-                                <td><input type="text" name="genres" id="genres_input"></td>
+                                <td><input class="form-control" type="text" name="genres" id="genres_input"></td>
                             </tr>
-                
+                            </div>
+                            <div class="form-group mb-3">
                             <tr>
                                 <td class="campo">
-                                    <label for="authors_input">Autor</label>
+                                    <h3>Autor</h3>
+                                    <label class="form-label" for="authors_input"></label>
                                 </td>
                                 <td>
-                                    <input type="text" name="authors" id="authors_input">
+                                    <input class="form-control" type="text" name="authors" id="authors_input">
                                 </td>
                             </tr>
+                            </div>
                             <tr>
                                 <td class="file-boton" colspan="2">
-                                <button id="submitButton">Add</button>
+                                <button class="btn btn-primary" id="submitButton">Add</button>
                             </td>
                             </tr>
                         </tbody>
                     </table>
                 </form>
                 
-                <button id="clearButton">Clear</button>
-                <button id="hideButton">Hide</button>
-                <button id="showButton">Show</button>
+                <button class="btn btn-primary" id="clearButton">Clear</button>
+                <button class="btn btn-primary" id="hideButton">Hide</button>
+                <button class="btn btn-primary" id="showButton">Show</button>
                 {% endblock %}
                 
                 {% block js %}

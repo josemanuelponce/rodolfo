@@ -85,6 +85,8 @@ def init_db(app) -> dict[str, Callable]:
         db.session.add(contact)
         db.session.commit()
 
+    
+
         
         
 

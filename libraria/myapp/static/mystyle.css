@@ -1,9 +1,8 @@
 body {
     background-color: #f0e5dd;
+   
 }
-.campo {
-    text-align: right;
-}
+
 .file-boton {
     text-align: right;
     padding-top: 1rem;
@@ -11,28 +10,12 @@ body {
 .error {
     border-color: red;
 }
-tr{
-    padding-bottom: 10px !important;
+
+.pagina {
+  height: 1200px;
 }
-#createForm {
-    border: solid 1px #4f4f4f;
-    width: 300px;
-    padding: 0.7rem;
-}
-#items-table {
-    border: solid 1px black;
-    border-collapse: collapse;
-  }
-  #items-table th {
-    border: solid 1px black;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  
-  #items-table td {
-    border: solid 1px black;
-  }
-  
+
+
   .delete-btn {
     text-decoration: none;
     padding: 0.5rem;
@@ -42,11 +25,7 @@ tr{
     color: red;
     text-decoration: none; /* Quitar subrayado de los links */
   }
+
+
+
   
-  .align-top {
-    vertical-align: top;
-  }
-  
-  .items-form {
-    margin-top: 50px;
-  }
