@@ -39,6 +39,22 @@ def init_views(app, db_access: dict[str, Callable]):
                  authors=request.form["authors"],
              )
             return redirect("/")
+        
+    #Usuario
+    @app.route("/createU", methods=["GET", "POST"])
+    def createU():
+        
+        if request.method == "GET":
+            return render_template("createU.html")
+
+        if request.method == "POST":
+            create_user = db_access["createU"]
+            create_user(
+                 name=request.form["name"],
+                 age=int(request.form["age"]),
+                 sex=request.form["sex"],
+             )
+            return redirect("/")
 
 
 

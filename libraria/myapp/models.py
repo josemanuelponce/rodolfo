@@ -13,6 +13,7 @@ def init_db(app) -> dict[str, Callable]:
         __tablename__ = "users"
 
         id = db.Column("user_id", db.Integer, primary_key=True)
+        name = db.Column("name", db.String)
         age = db.Column("age", db.Integer)
         sex = db.Column("sex", db.String)
         interactions = db.relationship("Interactions", backref="users", lazy=True)
@@ -85,7 +86,11 @@ def init_db(app) -> dict[str, Callable]:
         db.session.add(contact)
         db.session.commit()
 
-    
+    def create_user(name: str, age: int, sex: str):
+        user = Users(name=name, age=age, sex=sex)
+        
+        db.session.add(user)
+        db.session.commit()
 
         
         
@@ -97,6 +102,7 @@ def init_db(app) -> dict[str, Callable]:
     return { # aquí se publican las funciones internas de init_db, para poder llamarlas desde 
              # fuera de init_db
         "create": create_contact,
+        "createU": create_user,
         "items_list": items_list,
         "items_read": items_read,
         "items_interactions": items_interactions,
