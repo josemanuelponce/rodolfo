@@ -55,6 +55,7 @@ def init_views(app, db_access: dict[str, Callable]):
                  sex=request.form["sex"],
              )
             return redirect("/")
+    
 
 
 

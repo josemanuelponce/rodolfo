@@ -74,7 +74,8 @@
         <table class="table table-striped table-hover" id="items-table">
           <thead>
             <tr>
-              <th>ID</th>
+              <th>ID libro</th>
+              <th>ID usuario</th>
               <th>Nombre</th>
               <th>Genero</th>
               <th>Autor</th>
@@ -86,6 +87,7 @@
             {% for s in interactions %}
             <tr>
               <td>{{ s.items.id }}</td>
+              <td>{{ s.users.name }}</td>
               <td>{{ s.items.tittle }}</td>
               <td>{{ s.items.genres }}</td>
               <td>{{ s.items.authors }}</td>

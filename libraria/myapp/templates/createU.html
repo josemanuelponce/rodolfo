@@ -58,7 +58,7 @@
                 <button class="btn btn-primary" id="clearButton">Clear</button>
                 <button class="btn btn-primary" id="hideButton">Hide</button>
                 <button class="btn btn-primary" id="showButton">Show</button>
-                {% endblock %}
+                
                 
                 {% block js %}
                 <script src="{{ url_for('static', filename='validation.js') }}"></script>
@@ -66,7 +66,7 @@
             </div>
         </div>
     </div>
-    
+    {% endblock %}
 
 
 

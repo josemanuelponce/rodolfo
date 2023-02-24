@@ -12,7 +12,7 @@ def init_db(app) -> dict[str, Callable]:
     class Users(db.Model):
         __tablename__ = "users"
 
-        id = db.Column("user_id", db.Integer, primary_key=True)
+        id = db.Column("user_id", db.Integer, primary_key=True, autoincrement=True)
         name = db.Column("name", db.String)
         age = db.Column("age", db.Integer)
         sex = db.Column("sex", db.String)
@@ -21,7 +21,7 @@ def init_db(app) -> dict[str, Callable]:
     class Items(db.Model):
         __tablename__ = "items"
 
-        id = db.Column("item_id", db.Integer, primary_key=True)
+        id = db.Column("item_id", db.Integer, primary_key=True, autoincrement=True)
         tittle = db.Column("tittle", db.String)
         genres = db.Column("genres", db.String)
         authors = db.Column("authors", db.String)
@@ -33,11 +33,14 @@ def init_db(app) -> dict[str, Callable]:
     class Interactions(db.Model):
         __tablename__ = "interactions"
 
-        id = db.Column("interactions_id", db.Integer, primary_key=True)
-        user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-        item_id = db.Column(db.Integer, db.ForeignKey("items.item_id"))
+        id = db.Column("interactions_id", db.Integer, primary_key=True, autoincrement=True)
+        user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable = True)
+        item_id = db.Column(db.Integer, db.ForeignKey("items.item_id"), nullable = True)
 
         
+
+    
+
 
 
 
@@ -92,8 +95,7 @@ def init_db(app) -> dict[str, Callable]:
         db.session.add(user)
         db.session.commit()
 
-        
-        
+    
 
     db.create_all()
 
