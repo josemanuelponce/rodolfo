@@ -15,9 +15,12 @@
             <a href="/?page={{ page }}">{{ page }}</a>
             {% endif %} {% endfor %}
           </p>
-        <h2>Libros</h2>
-          {% for sp in items.items %}
+          <!-- Tablas para libros -->
+          <h2>Libros</h2>
+          
+            {% for sp in items.items %}
           <li><a href="/items/{{ sp.id }}">{{ sp.tittle }}</a></li>
+          
           {% endfor %}
         
         </div>
