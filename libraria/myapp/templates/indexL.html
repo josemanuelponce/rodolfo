@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% block content %}
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <br><br>
+          <p>  
+            {% for page in pages %} {% if page == items.page %}
+            <!-- En negritas la página actual-->
+            <a href="/?page={{ page }}" class="current-page"
+              ><strong>{{ page }}</strong></a
+            >
+            {% else %}
+            <!-- En letra normal el resto de las páginas -->
+            <a href="/?page={{ page }}">{{ page }}</a>
+            {% endif %} {% endfor %}
+          </p>
+          <!-- Tablas para libros -->
+          <h2>Libros</h2>
+          <table id="tabla" class="table table-striped">
+            <thead>
+              <tr>
+                <th>Titulo</th>
+                <th>Genero</th>
+                <th>Autor</th>
+              </tr>
+            </thead>
+            <tbody>
+          <tr>
+            {% for sp in items.items %}
+          <td><a href="/items/{{ sp.id }}">{{ sp.tittle }}</a></td>
+          <td>{{ sp.genres }}</td>
+          <td>{{ sp.authors }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+    
+    
+    

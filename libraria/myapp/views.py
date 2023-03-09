@@ -17,12 +17,43 @@ def init_views(app, db_access: dict[str, Callable]):
 
         total_pages = ceil (items.total / 10)
 
-        
-
-
         return render_template( 
 
             "index.html", items=items, pages=[i + 1 for i in range(total_pages)] 
+        )
+    
+    @app.route("/indexL", methods=["GET", "POST"])
+    def indexL(): 
+        
+        page = int(request.args.get("page", 1))
+        
+
+        items_list = db_access["items_list"] 
+
+        items = items_list(page=page)        
+
+        total_pages = ceil (items.total / 10)
+
+        return render_template( 
+
+            "indexL.html", items=items, pages=[i + 1 for i in range(total_pages)] 
+        )
+    
+    @app.route("/indexU", methods=["GET", "POST"])
+    def indexU(): 
+        
+        page = int(request.args.get("page", 1))
+        
+
+        users_list = db_access["users_list"]
+
+        users = users_list(page=page)        
+
+        total_pages = ceil (users.total / 10)
+
+        return render_template( 
+
+            "indexU.html", users=users, pages=[i + 1 for i in range(total_pages)] 
         )
     
     @app.route("/create", methods=["GET", "POST"])

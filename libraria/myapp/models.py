@@ -44,18 +44,33 @@ def init_db(app) -> dict[str, Callable]:
 
 
 
-    # las funciones que operan sobres los datos, al final se retornan de la función init_db para poder usarlos fuera de ella
-    def items_list(page: int = 1) -> list[Items]: # se pasa como parámetro la página, por defecto es página 1
-        # Ordenamiento en el motor de base de datos
+    
+    def items_list(page: int = 1) -> list[Items]: 
+        
         items_list = Items.query.order_by(Items.tittle).paginate(
-            page=page, max_per_page=10 # divide en páginas de 10 elementos y devuelve solamente los 10 (o menos si es la última)
-        )  # Ordenamiento Ascendente   # del número de página que se ha pasado como parámetro 
-        print(f"{items_list=}") # esto es para debug, no va
-        # items_list = Items.query.order_by(desc(Items.genres)).all()   # Ordenamiento Descendente
+            page=page, max_per_page=10 
+        )   
+        print(f"{items_list=}") 
 
-        # return [sp for sp in items_list]
         return items_list
     
+    def users_list(page: int = 1) -> list[Users]: 
+        
+        users_list = Users.query.order_by(Users.name).paginate(
+            page=page, max_per_page=10 
+        )   
+        print(f"{users_list=}") 
+
+        return users_list
+    
+
+    def interactions_list(page: int = 1) -> list[Interactions]: 
+        
+        interactions_list = Interactions.query.filter_by(users_id = Users.id).filter_by(item_id = Items.id).paginate(
+            page=page, max_per_page=10
+        )
+        
+        return interactions_list
 
 
     def items_read(id: int) -> Items:
@@ -71,6 +86,13 @@ def init_db(app) -> dict[str, Callable]:
         items.tittle = tittle
         items.genres = genres
         items.authors = authors
+        db.session.commit()
+
+    def users_update(id: int, name: str, age: int, sex: str):
+        users = Users.query.get(id)
+        users.tittle = name
+        users.genres = age
+        users.authors = sex
         db.session.commit()
 
     def items_delete(id: int):
@@ -106,9 +128,12 @@ def init_db(app) -> dict[str, Callable]:
         "create": create_contact,
         "createU": create_user,
         "items_list": items_list,
+        "users_list": users_list,
+        "interactions_list": interactions_list,
         "items_read": items_read,
         "items_interactions": items_interactions,
         "items_update": items_update,
+        "users_update": users_update,
         "items_delete": items_delete,
         "interactions_delete": interactions_delete,
     }

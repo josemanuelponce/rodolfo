@@ -75,7 +75,7 @@
           <thead>
             <tr>
               <th>ID libro</th>
-              <th>ID usuario</th>
+              <th>Nombre usuario</th>
               <th>Nombre</th>
               <th>Genero</th>
               <th>Autor</th>
@@ -84,18 +84,18 @@
           </thead>
           <!-- La tabla de la derecha  -->
           <tbody>
-            {% for s in interactions %}
+            {% for i in interactions %}
             <tr>
-              <td>{{ s.items.id }}</td>
-              <td>{{ s.users.name }}</td>
-              <td>{{ s.items.tittle }}</td>
-              <td>{{ s.items.genres }}</td>
-              <td>{{ s.items.authors }}</td>
+              <td>{{ i.items.id }}</td>
+              <td>{{ i.users.name }}</td>
+              <td>{{ i.items.tittle }}</td>
+              <td>{{ i.items.genres }}</td>
+              <td>{{ i.items.authors }}</td>
               <td>
                 <a
                   title="Borrar Survey"
                   class="delete-btn"
-                  href="/items/{{ items.id }}/interactions/{{ s.id }}/delete"
+                  href="/items/{{ items.id }}/interactions/{{ i.id }}/delete"
                 >
                 🗑
                 </a>

@@ -3,30 +3,11 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h2>Paginas</h2>
-          <p>  
-            {% for page in pages %} {% if page == items.page %}
-            <!-- En negritas la página actual-->
-            <a href="/?page={{ page }}" class="current-page"
-              ><strong>{{ page }}</strong></a
-            >
-            {% else %}
-            <!-- En letra normal el resto de las páginas -->
-            <a href="/?page={{ page }}">{{ page }}</a>
-            {% endif %} {% endfor %}
-          </p>
-          <!-- Tablas para libros -->
-          <h2>Libros</h2>
-          
-            {% for sp in items.items %}
-          <li><a href="/items/{{ sp.id }}">{{ sp.tittle }}</a></li>
-          
-          {% endfor %}
+          <br><br>
+          <h1>Tienda de libros</h1>
+          <img src="../img/tienda.jpg" alt="">
         
         </div>
       </div>
     </div>
     {% endblock %}
-    
-    
-    
