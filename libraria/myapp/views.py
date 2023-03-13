@@ -56,6 +56,24 @@ def init_views(app, db_access: dict[str, Callable]):
             "indexU.html", users=users, pages=[i + 1 for i in range(total_pages)] 
         )
     
+    @app.route("/indexI", methods=["GET", "POST"])
+    def indexI(): 
+        
+        page = int(request.args.get("page", 1))
+        
+
+        interactions_list = db_access["interactions_list"]
+
+        interactions = interactions_list(page=page)        
+
+        total_pages = ceil (interactions.total / 10)
+
+        return render_template( 
+
+            "indexI.html", interactions=interactions, pages=[i + 1 for i in range(total_pages)] 
+        )
+    
+    
     @app.route("/create", methods=["GET", "POST"])
     def create():
         
@@ -84,6 +102,22 @@ def init_views(app, db_access: dict[str, Callable]):
                  name=request.form["name"],
                  age=int(request.form["age"]),
                  sex=request.form["sex"],
+             )
+            return redirect("/")
+        
+
+    @app.route("/createI", methods=["GET", "POST"])
+    def create_interactions():
+        
+        if request.method == "GET":
+            return render_template("createI.html")
+
+        if request.method == "POST":
+            create_interactions = db_access["create_interactions"]
+            create_interactions(
+                 id=request.form["id"],
+                 user_id=request.form["user_id"],
+                 item_id=request.form["item_id"],
              )
             return redirect("/")
     
@@ -118,6 +152,35 @@ def init_views(app, db_access: dict[str, Callable]):
             interactions=interactions,
             pages=[i + 1 for i in range(total_pages)],
         )
+    
+    @app.route("/users/<id>", methods=["GET", "POST"])
+    def list_users_interactions(id: int):
+        page = int(request.args.get("page", 1))
+
+        users_interactions = db_access["users_interactions"]
+        interactions = users_interactions(id, page)
+        total_pages = ceil(interactions.total / 10)
+
+        users_read = db_access["users_read"]
+        users = users_read(id)
+
+        if request.method == "POST": # el request tiene toda la información
+            users_update = db_access["users_update"] # db_access está en los models.py
+            print(f"{request.form=}") # estás para depurar, no va
+            users_update( # se están asignando los valores en la base de datos
+                id=id,
+                name=request.form["name"],
+                age=int(request.form["age"]),
+                sex=request.form["sex"],
+            )
+            return redirect("/")
+
+        return render_template(
+            "users.html",
+            users=users,
+            interactions=interactions,
+            pages=[i + 1 for i in range(total_pages)],
+        )
 
     @app.route("/items/<items_id>/interactions/<int:interactions_id>/delete", methods=["GET"])
     def delete_items_interactions(items_id: int, interactions_id: int):
@@ -135,4 +198,11 @@ def init_views(app, db_access: dict[str, Callable]):
         if request.method == "POST":
             items_delete = db_access["items_delete"]
             items_delete(id=id)
+            return redirect("/")
+        
+    @app.route("/users/<id>/delete", methods=["POST"])
+    def users_delete(id: int):
+        if request.method == "POST":
+            users_delete = db_access["users_delete"]
+            users_delete(id=id)
             return redirect("/")

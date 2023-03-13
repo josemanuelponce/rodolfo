@@ -11,42 +11,42 @@
 </head>
 <body>
     <div class="container-fluid">
-        <h1>Registrar</h1>
-        <button class="btn btn-primary" id="create-btn">Volver</button>
+        <h1>Agrega un libro</h1>
             <br><br>
         <div class="row">
             <div class="col-12">
-                <form id="createForm" action="/createU" method="POST">
+                <form id="createForm" action="/createI" method="POST">
                     <table class="table table-striped table-hover">
                         <tbody>
                             <div class="form-group mb-3">
-                                <tr>
-                                    <td class="campo">
-                                        <h3>Nombre</h3>
-                                        <label class="form-label" for="name_input"></label>
-                                    </td>
-                                    <td><input class="form-control" type="text" name="name" id="name_input"></td>
-                                </tr>
-                                </div>
-                            <div class="form-group mb-3">
                             <tr>
                                 <td class="campo">
-                                    <h3>Edad</h3>
-                                    <label class="form-label" for="age_input"></label>
+                                    <h3>id</h3>
+                                    <label class="form-label" for="id_input"></label>
                                 </td>
-                                <td><input class="form-control" type="text" name="age" id="age_input"></td>
+                                <td><input class="form-control" type="text" name="id" required id="id_input"></td>
                             </tr>
                             </div>
                             <div class="form-group mb-3">
                             <tr>
                                 <td class="campo">
-                                    <h3>Sexo</h3>
-                                    <label class="form-label" for="sex_input"></label>
+                                    <h3>user</h3>
+                                    <label class="form-label" for="user_input"></label>
                                 </td>
-                                <td><input class="form-control" type="text" name="sex" id="sex_input"></td>
+                                <td><input class="form-control" type="text" name="user_id" required id="user_input"></td>
                             </tr>
                             </div>
-
+                            <div class="form-group mb-3">
+                            <tr>
+                                <td class="campo">
+                                    <h3>item</h3>
+                                    <label class="form-label" for="item_input"></label>
+                                </td>
+                                <td>
+                                    <input class="form-control" type="text" name="item_id" required id="item_input">
+                                </td>
+                            </tr>
+                            </div>
                             <tr>
                                 <td class="file-boton" colspan="2">
                                 <button class="btn btn-primary" id="submitButton">Add</button>
@@ -59,7 +59,7 @@
                 <button class="btn btn-primary" id="clearButton">Clear</button>
                 <button class="btn btn-primary" id="hideButton">Hide</button>
                 <button class="btn btn-primary" id="showButton">Show</button>
-                
+            
                 
                 {% block js %}
                 <script src="{{ url_for('static', filename='validation.js') }}"></script>

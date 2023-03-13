@@ -22,7 +22,7 @@ function show(){
  //--------------------------------
 
 
- const form = document.querySelector('#createForm');
+const form = document.querySelector('#createForm');
 		form.addEventListener('submit', (event) => {
 			// Detiene el envío del formulario
 			event.preventDefault();
@@ -35,6 +35,31 @@ function show(){
 			}
 			form.classList.add('was-validated');
 		})
+
+		// funcion asincrona para ver una web
+		async function redirect() {
+			await fetch('https://www.casadellibro.com/');
+			window.location.href = 'https://www.casadellibro.com/';
+			
+		  }
+
+		// funcion flecha 
+		const createBtn = document.getElementById('create-btn');
+
+		createBtn.addEventListener('click', () => {
+  		window.location.href = '/';
+		});
+		  
+		  
+		  
+		  
+		  
+		
+		
+		  
+
+
+
 
 		// Agrega la validación de género
 		// const genreInput = document.querySelector('#genre');

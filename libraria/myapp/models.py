@@ -40,11 +40,6 @@ def init_db(app) -> dict[str, Callable]:
         
 
     
-
-
-
-
-    
     def items_list(page: int = 1) -> list[Items]: 
         
         items_list = Items.query.order_by(Items.tittle).paginate(
@@ -66,7 +61,7 @@ def init_db(app) -> dict[str, Callable]:
 
     def interactions_list(page: int = 1) -> list[Interactions]: 
         
-        interactions_list = Interactions.query.filter_by(users_id = Users.id).filter_by(item_id = Items.id).paginate(
+        interactions_list = Interactions.query.filter_by(user_id = Users.id).filter_by(item_id = Items.id).paginate(
             page=page, max_per_page=10
         )
         
@@ -75,11 +70,20 @@ def init_db(app) -> dict[str, Callable]:
 
     def items_read(id: int) -> Items:
         return Items.query.get(id)
+    def users_read(id: int) -> Users:
+        return Users.query.get(id)
 
     def items_interactions(id: int, page: int = 1):
         return Interactions.query.filter_by(item_id=id).paginate(
             page=page, max_per_page=10
         )
+    
+    def users_interactions(id: int, page: int = 1):
+        return Interactions.query.filter_by(user_id=id).paginate(
+            page=page, max_per_page=10
+        )
+    
+
     # esta función void es la que hace el update sobre la base de datos
     def items_update(id: int, tittle: str, genres: str, authors: str):
         items = Items.query.get(id)
@@ -90,14 +94,19 @@ def init_db(app) -> dict[str, Callable]:
 
     def users_update(id: int, name: str, age: int, sex: str):
         users = Users.query.get(id)
-        users.tittle = name
-        users.genres = age
-        users.authors = sex
+        users.name = name
+        users.age = age
+        users.sex = sex
         db.session.commit()
 
     def items_delete(id: int):
         items = Items.query.get(id)
         db.session.delete(items)
+        db.session.commit()
+
+    def users_delete(id: int):
+        users = Users.query.get(id)
+        db.session.delete(users)
         db.session.commit()
 
     def interactions_delete(id: int):
@@ -117,6 +126,13 @@ def init_db(app) -> dict[str, Callable]:
         db.session.add(user)
         db.session.commit()
 
+    def create_interactions(id: int, user_id: int, item_id: int):
+        interactions = Interactions(id=id, user_id=user_id, item_id=item_id)
+        
+        db.session.add(interactions)
+        db.session.commit()
+
+
     
 
     db.create_all()
@@ -127,14 +143,18 @@ def init_db(app) -> dict[str, Callable]:
              # fuera de init_db
         "create": create_contact,
         "createU": create_user,
+        "create_interactions": create_interactions,
         "items_list": items_list,
         "users_list": users_list,
         "interactions_list": interactions_list,
         "items_read": items_read,
+        "users_read": users_read,
         "items_interactions": items_interactions,
+        "users_interactions": users_interactions,
         "items_update": items_update,
         "users_update": users_update,
         "items_delete": items_delete,
+        "users_delete": users_delete,
         "interactions_delete": interactions_delete,
     }
     
