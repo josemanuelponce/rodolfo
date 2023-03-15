@@ -7,12 +7,12 @@
           <p>  
             {% for page in pages %} {% if page == items.page %}
             <!-- En negritas la página actual-->
-            <a href="/?page={{ page }}" class="current-page"
+            <a href="/indexL?page={{ page }}" class="current-page"
               ><strong>{{ page }}</strong></a
             >
             {% else %}
             <!-- En letra normal el resto de las páginas -->
-            <a href="/?page={{ page }}">{{ page }}</a>
+            <a href="/indexL?page={{ page }}">{{ page }}</a>
             {% endif %} {% endfor %}
           </p>
           <!-- Tablas para libros -->

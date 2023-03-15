@@ -8,18 +8,11 @@ def init_views(app, db_access: dict[str, Callable]):
     @app.route("/", methods=["GET", "POST"])
     def index(): 
         
-        page = int(request.args.get("page", 1))
         
-
-        items_list = db_access["items_list"] 
-
-        items = items_list(page=page)        
-
-        total_pages = ceil (items.total / 10)
 
         return render_template( 
 
-            "index.html", items=items, pages=[i + 1 for i in range(total_pages)] 
+            "index.html"
         )
     
     @app.route("/indexL", methods=["GET", "POST"])
@@ -103,7 +96,7 @@ def init_views(app, db_access: dict[str, Callable]):
                  age=int(request.form["age"]),
                  sex=request.form["sex"],
              )
-            return redirect("/")
+            return redirect("/indexU")
         
 
     @app.route("/createI", methods=["GET", "POST"])
@@ -181,6 +174,33 @@ def init_views(app, db_access: dict[str, Callable]):
             interactions=interactions,
             pages=[i + 1 for i in range(total_pages)],
         )
+    
+    @app.route("/interactions/<id>", methods=["GET", "POST"])
+    def list_interactions_interactions(id: int):
+        page = int(request.args.get("page", 1))
+
+        
+
+        interactions_read = db_access["interactions_read"]
+        interactions = interactions_read(id)
+
+        if request.method == "POST": # el request tiene toda la información
+            interactions_update = db_access["interactions_update"] # db_access está en los models.py
+            print(f"{request.form=}") # estás para depurar, no va
+            interactions_update( # se están asignando los valores en la base de datos
+                id=id,
+                users_id=int(request.form["users_id"]),
+                item_id=int(request.form["item_id"]),
+                
+            )
+            return redirect("/")
+
+        return render_template(
+            "interactions.html",
+            interactions=interactions,
+            
+           
+        )
 
     @app.route("/items/<items_id>/interactions/<int:interactions_id>/delete", methods=["GET"])
     def delete_items_interactions(items_id: int, interactions_id: int):
@@ -206,3 +226,5 @@ def init_views(app, db_access: dict[str, Callable]):
             users_delete = db_access["users_delete"]
             users_delete(id=id)
             return redirect("/")
+        
+    

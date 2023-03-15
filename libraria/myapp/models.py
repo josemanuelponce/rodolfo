@@ -72,6 +72,8 @@ def init_db(app) -> dict[str, Callable]:
         return Items.query.get(id)
     def users_read(id: int) -> Users:
         return Users.query.get(id)
+    def interactions_read(id: int) -> Interactions:
+        return Interactions.query.get(id)
 
     def items_interactions(id: int, page: int = 1):
         return Interactions.query.filter_by(item_id=id).paginate(
@@ -82,6 +84,8 @@ def init_db(app) -> dict[str, Callable]:
         return Interactions.query.filter_by(user_id=id).paginate(
             page=page, max_per_page=10
         )
+    
+        
     
 
     # esta función void es la que hace el update sobre la base de datos
@@ -149,6 +153,7 @@ def init_db(app) -> dict[str, Callable]:
         "interactions_list": interactions_list,
         "items_read": items_read,
         "users_read": users_read,
+        "interactions_read": interactions_read,
         "items_interactions": items_interactions,
         "users_interactions": users_interactions,
         "items_update": items_update,

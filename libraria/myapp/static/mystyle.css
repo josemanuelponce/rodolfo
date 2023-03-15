@@ -3,6 +3,8 @@ body {
 }
 
 
+
+
 .file-boton {
     text-align: right;
     padding-top: 1rem;
@@ -25,6 +27,8 @@ body {
     color: red;
     text-decoration: none; /* Quitar subrayado de los links */
   }
+
+  
 
 
 

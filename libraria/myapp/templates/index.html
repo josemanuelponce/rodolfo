@@ -5,12 +5,28 @@
       <div class="row">
         <div class="col-12">
           <br>
+          
+          {% if request.method == 'POST' %}
+          {% set nombre = request.form['nombre'] %}
+          <h3>Hola {{ nombre }}, ¡bienvenido!</h3>
+          {% endif %}
           <h1>Tienda de libros</h1>
           
           <button class="btn btn-primary" onclick="redirect()">Tienda online</button>
+          <br>
+          <div>
+            <img src="../static/tienda.jpg" style="width: 100%; height: 700px;">
+          </div>
           
+          <br>
           
-        
+
+        <form method="POST">
+          <label for="nombre">Por favor, ingrese su nombre:</label>
+          <input type="text" name="nombre" id="nombre">
+         
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
         </div>
       </div>
     </div>
